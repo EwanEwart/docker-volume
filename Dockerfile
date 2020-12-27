@@ -5,26 +5,53 @@
 FROM golang:latest
 
 # 2.
-# Copy files and folders from local system onto the docker image.
-ADD . /go/src/hello
+# Work Space Directory
+WORKDIR /go/bin
 
 # 3.
-# Create an executable binary for our project 
-# with the command "go install"
-RUN go install hello
+# Copy files and folders 
+# from the local system 
+# onto the docker image.
+ADD . /go/src/docker-volume
 
 # 4.
+# Create an executable binary for our project 
+# with the command "go install"
+RUN go install docker-volume
+
+# 5.
 # The environment variable NAME
-# will be picked up by the program 'hello'
+# will be picked up by the program 'docker-volume'
 # and printed to the console.
 ENV NAME Keir
 
-# 5.
+# 6.
+# ENTRYPOINT ["executable", "param1", "param2"] # exec-form
+# ENTRYPOINT command param1 param2              # shell form
 # The command to execute,
 # when the container is started.
-ENTRYPOINT /go/bin/hello
+ENTRYPOINT ["/go/bin/docker-volume"]
+# ENTRYPOINT "/go/bin/docker-volume"
 
-# 6.
+# The CMD instruction if ENTRYPOINT is present in the Dockerfile 
+# will act as default arguments 
+# for the command represented by the ENTRYPOINT. 
+# 
+# But, these parameters can be overwritten 
+# by providing arguments in the docker run <image> param1 param2 
+# 
+# 💡 The default ENTRYPOINT value can be overwritten in the Dockerfile 
+# using the --entrypoint flag with the docker run command, 
+# but it will only accept the executable value.
+# 
+# By using ENRTYPOINT instruction, the container acts as an executable, 
+# which runs a command represented by the ENRTYPOINT 
+# once it spawned using the docker run command. 
+# Optional arguments may be passed to the docker run <image> [params] command,
+# which replaces CMD values.
+
+CMD [ "0" ]
+# 7.
 # Generally used for network applications.
 # Allows us to connect to the application
 # running inside the container
