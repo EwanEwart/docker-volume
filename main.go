@@ -25,8 +25,12 @@ func main() {
         {"line 01","line 02","line 03"}, 
         {"line 01","line 02","line 03","line 04"}, 
         {"line 01","line 02","line 03","line 04","line 05"}, 
+        {"line 01","line 02","line 03","line 04","line 05","line 06"}, 
     }
     i:=1
+    if len(os.Args) == 1 {
+        log.Fatal("Usage: main.go x, x ∈ [1,",len(linesToWrite)-1,"]")
+    }
     arg1,err:=strconv.Atoi(os.Args[1])
     if err != nil {
         log.Fatal("arg1 conversion failure: %v\n", err.Error())
