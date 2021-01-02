@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if (( $# == 0 )); then
     # Run script with no arguments: build container
