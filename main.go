@@ -33,7 +33,7 @@ func main() {
     }
     arg1,err:=strconv.Atoi(os.Args[1])
     if err != nil {
-        log.Fatal("arg1 conversion failure: %v\n", err.Error())
+        log.Fatal("arg1 conversion failure: ", err.Error()) 
     }
     cntLines := len(linesToWrite)
     isAre:=map[bool]string{true: "is", false: "are"} [cntLines==1]

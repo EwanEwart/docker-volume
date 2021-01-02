@@ -1,5 +1,6 @@
 # 1.
-# The base image we want to use to build our docker image from.
+# The base image we want to use 
+# to build our docker image from.
 # This image is specialised for golang.
 # Therefore GOPATH will be set to /go
 FROM golang:latest
@@ -25,32 +26,45 @@ RUN go install docker-volume
 # and printed to the console.
 ENV NAME Keir
 
+# create volume
+# VOLUME [  "/go/shared" ]
+
 # 6.
 # ENTRYPOINT ["executable", "param1", "param2"] # exec-form
-# ENTRYPOINT command param1 param2              # shell form
+# ENTRYPOINT command param1 param2              # shell-form
 # The command to execute,
 # when the container is started.
-ENTRYPOINT ["/go/bin/docker-volume"]
-# ENTRYPOINT "/go/bin/docker-volume"
+# exec-form ...
+ENTRYPOINT [ "/go/bin/docker-volume" ] 
+# ENTRYPOINT [ "/go/bin/docker-volume","3" ] 
+# shell-form ...
+# ENTRYPOINT "/go/bin/docker-volume" 
 
-# The CMD instruction if ENTRYPOINT is present in the Dockerfile 
-# will act as default arguments 
+# The CMD-instruction 
+# - if ENTRYPOINT is present in the Dockerfile -
+# will act as default argument
 # for the command represented by the ENTRYPOINT. 
 # 
 # But, these parameters can be overwritten 
-# by providing arguments in the docker run <image> param1 param2 
+# by providing arguments 
+# in the docker run <image> param1 param2 
 # 
-# 💡 The default ENTRYPOINT value can be overwritten in the Dockerfile 
-# using the --entrypoint flag with the docker run command, 
+# The default ENTRYPOINT value 
+# can be overwritten in the Dockerfile 
+# using the --entrypoint flag 
+# with the docker run command, 
 # but it will only accept the executable value.
 # 
-# By using ENRTYPOINT instruction, the container acts as an executable, 
+# By using the ENRTYPOINT instruction, 
+# the container acts as an executable, 
 # which runs a command represented by the ENRTYPOINT 
-# once it spawned using the docker run command. 
-# Optional arguments may be passed to the docker run <image> [params] command,
-# which replaces CMD values.
+# once it is spawned 
+# using the docker run command. 
+# Optional arguments 
+# may be passed to the docker run <image> [params] 
+# command, which replaces CMD values.
 
-CMD [ "0" ]
+CMD [ "1" ]
 # 7.
 # Generally used for network applications.
 # Allows us to connect to the application
