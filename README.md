@@ -13,21 +13,21 @@ Access "outer space"
 
 While **bind mounts** are dependent on the directory structure and OS of the host machine, **volumes** are completely managed by Docker. 
 
-**Volumes** have several **advantages** over *bind mounts*:
+**Volumes** have several **advantages** over **bind mounts**:
 
-1. **Volumes** are easier to back up or migrate than *bind mounts*.
+1. Volumes are **easier to back up or migrate** than bind mounts.
 
-2. You can manage volumes using the **Docker CLI commands** or the Docker API.
+2. You can manage volumes using the **Docker CLI commands** or the **Docker API**.
 
 3. Volumes work on both **Linux** and **Windows** containers.
 
-4. Volumes can be more safely shared among multiple containers.
+4. Volumes can be more **safely shared** among multiple containers.
 
-5. Volume drivers let you store volumes on remote hosts loud providers, to encrypt the contents of volumes, or to add other functionality.
+5. Volume drivers let you *store* volumes on **remote hosts** or **cloud providers**,  to encrypt the contents of volumes, or to add other functionality.
 
 6. New volumes can have their content pre-populated by container.
 
-7. Volumes on Docker Desktop have much higher performance than bind mounts from Mac and Windows hosts.
+7. Volumes on the Docker Desktop have much higher performance than bind mounts from Mac and Windows hosts.
 
 In addition, volumes are often a better choice than persisting data in a container’s writable layer, because a volume does not increase the size of the containers using it, and the volume’s contents exist outside the lifecycle of a given container.
 
@@ -78,7 +78,9 @@ When using volumes with `services`, `only --mount` is supported.
 
 ## Create and manage Volumes
 
-Unlike a `bind mount`, you can create and manage `volumes` outside the scope of any container.
+Unlike `bind mount`,  
+you can create and manage `volumes`  
+outside the scope of any container.
 
 ### Create a volume 
 > $ `docker volume create kate.vol`

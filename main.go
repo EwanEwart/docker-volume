@@ -13,7 +13,7 @@ import (
 func main() {
 	fmt.Printf("This program's binary → %v\n",os.Args[0])
 
-    file, err := os.Create("./created-externally")
+    file, err := os.Create("./shared/created-externally")
     if err != nil {
         log.Fatal(err)
     }

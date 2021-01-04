@@ -7,27 +7,22 @@ FROM golang:latest
 
 # 2.
 # Work Space Directory
-WORKDIR /go/bin
+WORKDIR /go
 
 # 3.
 # Copy files and folders 
 # from the local system 
 # onto the docker image.
-ADD . /go/src/docker-volume
+# ADD . /go/src/docker-volume
+COPY . .
 
 # 4.
 # Create an executable binary for our project 
 # with the command "go install"
-RUN go install docker-volume
-
-# 5.
-# The environment variable NAME
-# will be picked up by the program 'docker-volume'
-# and printed to the console.
-ENV NAME Keir
+RUN go build -o ./bin/docker-volume .
 
 # create volume
-# VOLUME [  "/go/shared" ]
+VOLUME [  "/go/shared" ]
 
 # 6.
 # ENTRYPOINT ["executable", "param1", "param2"] # exec-form
@@ -64,10 +59,5 @@ ENTRYPOINT [ "/go/bin/docker-volume" ]
 # may be passed to the docker run <image> [params] 
 # command, which replaces CMD values.
 
+# Default arguments
 CMD [ "1" ]
-# 7.
-# Generally used for network applications.
-# Allows us to connect to the application
-# running inside the container
-# from the host system's localhost.
-EXPOSE 9000
