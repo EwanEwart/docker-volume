@@ -44,6 +44,7 @@ build_on_keir () { // build on keir intranet
 }
 raw_run() {
     echo "> raw run"
+    mkdir shared 2>/dev/null
     rm ./shared/$file 2>/dev/null
     ./main.go $no_of_lines_to_create
     ls -lt ./shared/$file

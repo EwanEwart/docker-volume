@@ -1,4 +1,5 @@
-//${GOROOT}/bin/go run $0 $@ ; exit
+//$(which go) run $0 $@ ; exit
+
 
 package main
 
