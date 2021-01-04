@@ -44,10 +44,10 @@ build_on_keir () { // build on keir intranet
 }
 raw_run() {
     echo "> raw run"
-    rm $file 2>/dev/null
+    rm ./shared/$file 2>/dev/null
     ./main.go $no_of_lines_to_create
-    ls -lt $file
-    cat $file
+    ls -lt ./shared/$file
+    cat ./shared/$file
 }
 dvmc () { # enter macOS docker VM console
     docker run -it --rm --privileged --pid=host alpine:edge nsenter -t 1 -m -u -n -i sh
